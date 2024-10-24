@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>Estudiantes</h2>
+      <button class="btn btn-primary" onclick="estudiantes()">Mostrar</button>
+
+      <div class="" id="result"></div>
+    </div>
+
+    <script>
+      function estudiantes() {
+        const estudiantes = [
+          { nombre: "Brayan", apellido: "Calero", nota: 100 },
+          { nombre: "Jose", apellido: "Brenes", nota: 100 },
+          { nombre: "Carlos", apellido: "Solis", nota: 85 },
+          { nombre: "Pamela", apellido: "Soto", nota: 80 },
+        ];
+
+        const resultadoDiv = document.getElementById("result");
+        let contenido = "<ul>";
+
+        let suma = 0;
+        estudiantes.forEach((estudiante) => {
+          contenido += `<br><li class="list-group-item"'>${estudiante.nombre} ${estudiante.apellido} - Nota: ${estudiante.nota}</li>`;
+          suma += estudiante.nota;
+        });
+
+        const promedio = suma / estudiantes.length;
+
+        contenido += "</ul><br>Promedio de notas: " + promedio.toFixed(2);
+        resultadoDiv.innerHTML = contenido;
+      }
+    </script>
+  </body>
+</html>

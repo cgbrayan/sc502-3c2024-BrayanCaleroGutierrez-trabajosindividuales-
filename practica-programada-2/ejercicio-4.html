@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Verificacion de Edad</h2>
+      <label for="edad">Ingresa tu edad:</label>
+      <input type="number" id="edad-entrada" min="0" />
+      <button onclick="verificacion()">Verificar</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function verificacion() {
+        const edad = parseInt(document.getElementById("edad-entrada").value);
+        const mensaje = document.getElementById("result");
+
+        if (edad >= 18) {
+          mensaje.innerHTML = "Eres mayor de edad.";
+        } else {
+          mensaje.innerHTML = "Eres menor de edad.";
+        }
+      }
+    </script>
+  </body>
+</html>
