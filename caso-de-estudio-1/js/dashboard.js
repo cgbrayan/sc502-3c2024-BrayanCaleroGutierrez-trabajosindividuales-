@@ -39,23 +39,23 @@ document.addEventListener("DOMContentLoaded", function () {
       const taskCard = document.createElement("div");
       taskCard.className = "col-md-4 mb-3";
       taskCard.innerHTML = `
-            <div class="card">
-                      <div class="card-body">
-                          <h5 class="card-title">${task.title}</h5>
-                          <p class="card-text">${task.description}</p>
-                          <p class="card-text"><small class="text-muted">Due: ${task.dueDate}</small></p>
-                          <div class="input-group mb-3">
-                              <input type="text" class="form-control" id="comment-input-${task.id}" placeholder="Add a comment">
-                              <button data-id="${task.id}" onclick="addComment(${task.id})"><span>&#10004;</span></button>
-                          </div>
-                          <button data-id="${task.id}" onclick="showComments(${task.id})">Comments</button>
-                      </div>
-                      <div class="card-footer d-flex justify-content-between">
-                          <button class="btn btn-secondary btn-sm edit-task" data-id="${task.id}">Edit</button>
-                          <button class="btn btn-danger btn-sm delete-task" data-id="${task.id}">Delete</button>
-                      </div>
-                  </div>
-            `;
+          <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${task.title}</h5>
+                        <p class="card-text">${task.description}</p>
+                        <p class="card-text"><small class="text-muted">Due: ${task.dueDate}</small></p>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="comment-input-${task.id}" placeholder="Add a comment">
+                            <button data-id="${task.id}" onclick="addComment(${task.id})"><span>&#10004;</span></button>
+                        </div>
+                        <button data-id="${task.id}" onclick="showComments(${task.id})">Comments</button>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <button class="btn btn-secondary btn-sm edit-task" data-id="${task.id}">Edit</button>
+                        <button class="btn btn-danger btn-sm delete-task" data-id="${task.id}">Delete</button>
+                    </div>
+                </div>
+          `;
       taskList.appendChild(taskCard);
     });
 
@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".delete-task").forEach(function (button) {
       button.addEventListener("click", handleDeleteTask);
     });
+
   }
 
   window.addComment = function (taskId) {
@@ -93,16 +94,23 @@ document.addEventListener("DOMContentLoaded", function () {
       commentView.className =
         "d-flex justify-content-between align-items-center";
       commentView.innerHTML = `
-              <span>${comment.text}</span>
-              <button  onclick="deleteComment(${taskId}, ${comment.id})">Delete</button>
-          `;
+            <span>${comment.text}</span>
+            <button  onclick="deleteComment(${taskId}, ${comment.id})">Delete</button>
+        `;
       commentsList.appendChild(commentView);
     });
 
-    const commentsModal = new bootstrap.Modal(
-      document.getElementById("commentsModal")
-    );
-    commentsModal.show();
+    if (task.comments.length > 0) {
+      const commentsModal = new bootstrap.Modal(
+        document.getElementById("commentsModal")
+      );
+      commentsModal.show();
+    } else {
+      const commentsModal = bootstrap.Modal.getInstance(
+        document.getElementById("commentsModal")
+      );
+      commentsModal.hide();
+    }
   };
 
   window.deleteComment = function (taskId, commentId) {
