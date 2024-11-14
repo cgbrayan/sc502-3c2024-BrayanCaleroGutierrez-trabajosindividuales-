@@ -1,0 +1,10 @@
+ESTADO DE CUENTA
+ID: 1 | Descripcion: Ropa | Monto: 12000 Colones
+ID: 2 | Descripcion: Lentes | Monto: 5000 Colones
+ID: 3 | Descripcion: Faja | Monto: 2500 Colones
+ID: 4 | Descripcion: Auriculaes | Monto: 7200 Colones
+ID: 5 | Descripcion: Camisa | Monto: 4500 Colones
+Monto total: 31200
+Monto total + intereses: 32011.2
+Cashback: 32.0112
+Monto a pagar: 31979.1888 Colones
